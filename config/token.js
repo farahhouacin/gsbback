@@ -1,18 +1,20 @@
-var jsonwebtoken = require('jsonwebtoken')
+var jsonwebtoken = require('jsonwebtoken') 
 
-const createAccessToken = (user) => {
+const createAccessToken = (user) => { // creation d'un token
     return new Promise((resolve, reject) => {
-        if(user.id === undefined) reject('credentials not valid')
-        else{
-            const signedUser = {   // ON CREE NOTRE OBJET
-                login: user.login,
+        if(user.id === undefined) reject({error:'Invalid Credentials'})
+    else{
+            const signedUser = {
+                email: user.login,
                 id: user.id
-            }   // PPE EST LE SALT
-            jsonwebtoken.sign(signedUser, "ppe", {expiresIn: '7d'}, (error, token) => {
+            }
+
+            jsonwebtoken.sign(signedUser,"ppe", {expiresIn: '1d'}, (error, token) => {
                 if(error) reject(error)
-                else resolve(token)
+                resolve(token)
             })
         }
     })
 }
+
 module.exports = createAccessToken
