@@ -14,8 +14,6 @@
     "jsonwebtoken": "^8.5.1",
     "mysql": "^2.18.1",
     "mysql2": "^2.2.5",
-    "react-bootstrap": "^1.5.1",
-    "react-bootstrap-validation": "^0.1.11",
     "save": "^2.4.0"
   }
 }
